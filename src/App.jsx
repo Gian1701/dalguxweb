@@ -47,6 +47,12 @@ const Navbar = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const NAV_LINKS = [
+    { label: "Servicios", id: "services" },
+    { label: "Proceso", id: "process" },
+    { label: "Proyectos", id: "projects" }
+  ];
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -65,18 +71,20 @@ const Navbar = () => {
       className="fixed top-0 w-full z-50 backdrop-blur-md bg-black/50 border-b border-white/5"
     >
       <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+        
         {/* Logo */}
         <a href="#home" className="flex items-center gap-3 group">
-           <div className="relative w-10 h-10 overflow-hidden rounded-lg border border-white/10 group-hover:border-purple-500/50 transition-colors">
-             <img 
-               src={LOGO_FILE} 
-               alt="DALGUX Logo" 
-               className="w-full h-full object-contain bg-black"
-               onError={(e) => {
-                 e.target.style.display = 'none';
-                 e.target.parentElement.innerHTML = '<div class="w-full h-full bg-gradient-to-br from-teal-600 to-purple-900 flex items-center justify-center text-white font-bold">D</div>';
-               }}
-             />
+          <div className="relative w-10 h-10 overflow-hidden rounded-lg border border-white/10 group-hover:border-purple-500/50 transition-colors">
+            <img 
+              src={LOGO_FILE} 
+              alt="DALGUX Logo" 
+              className="w-full h-full object-contain bg-black"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.parentElement.innerHTML = 
+                  '<div class="w-full h-full bg-gradient-to-br from-teal-600 to-purple-900 flex items-center justify-center text-white font-bold">D</div>';
+              }}
+            />
           </div>
           <span className="text-xl font-bold text-white tracking-wider">
             DALGUX<span className="text-purple-500">.</span>DEVS
@@ -85,15 +93,16 @@ const Navbar = () => {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
-          {['Servicios', 'Proceso', 'Proyectos'].map((item) => (
+          {NAV_LINKS.map(({ label, id }) => (
             <a 
-              key={item} 
-              href={`#${item.toLowerCase()}`}
+              key={id} 
+              href={`#${id}`}
               className="text-sm text-gray-400 hover:text-white transition-colors font-medium tracking-wide"
             >
-              {item}
+              {label}
             </a>
           ))}
+
           <a 
             href={WHATSAPP_URL}
             className="px-6 py-2 bg-white text-black font-bold text-sm rounded-full hover:bg-purple-400 transition-colors"
@@ -118,9 +127,14 @@ const Navbar = () => {
             className="md:hidden bg-black border-b border-white/10 overflow-hidden"
           >
             <div className="px-6 py-8 flex flex-col gap-6">
-              {['Servicios', 'Proceso', 'Proyectos'].map((item) => (
-                <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setMobileOpen(false)} className="text-xl text-white font-bold">
-                  {item}
+              {NAV_LINKS.map(({ label, id }) => (
+                <a 
+                  key={id} 
+                  href={`#${id}`} 
+                  onClick={() => setMobileOpen(false)} 
+                  className="text-xl text-white font-bold"
+                >
+                  {label}
                 </a>
               ))}
             </div>
@@ -336,8 +350,8 @@ const Footer = () => {
         </div>
         
         <div className="flex gap-6">
-          <a href="#" className="text-zinc-500 hover:text-white transition-colors">LinkedIn</a>
-          <a href="#" className="text-zinc-500 hover:text-white transition-colors">Instagram</a>
+          <a href="https://www.linkedin.com/in/dalgux-dev/" className="text-zinc-500 hover:text-white transition-colors">LinkedIn</a>
+          <a href="https://www.instagram.com/dalguxdevs?igsh=a21ydzM1NWdndnF3" className="text-zinc-500 hover:text-white transition-colors">Instagram</a>
           <a href={WHATSAPP_URL} className="text-zinc-500 hover:text-white transition-colors">WhatsApp</a>
         </div>
       </div>

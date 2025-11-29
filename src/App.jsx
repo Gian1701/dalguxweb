@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { 
-  Code2, Database, MessageSquare, Zap, 
-  ArrowRight, Menu, X, Smartphone, Layers, 
+import {
+  Code2, Database, MessageSquare, Zap,
+  ArrowRight, Menu, X, Smartphone, Layers,
   Monitor, Shield
 } from 'lucide-react';
 
 // --- Configuración ---
 const WHATSAPP_NUMBER = "525514677308";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
-const LOGO_FILE = "PHOTO-2025-11-12-00-01-39.jpg";
+const LOGO_FILE = "/LOGO.png";
+
 
 // --- Cursor Personalizado (Efecto Glow) ---
 const CustomCursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  
+
   useEffect(() => {
     const updateMousePosition = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -71,21 +72,22 @@ const Navbar = () => {
       className="fixed top-0 w-full z-50 backdrop-blur-md bg-black/50 border-b border-white/5"
     >
       <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-        
+
         {/* Logo */}
         <a href="#home" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 overflow-hidden rounded-lg border border-white/10 group-hover:border-purple-500/50 transition-colors">
-            <img 
-              src={LOGO_FILE} 
-              alt="DALGUX Logo" 
-              className="w-full h-full object-contain bg-black"
+          <div className="w-20 h-20">
+            <img
+              src={LOGO_FILE}
+              alt="DALGUX Logo"
+              className="w-full h-full object-contain"
               onError={(e) => {
                 e.target.style.display = 'none';
-                e.target.parentElement.innerHTML = 
-                  '<div class="w-full h-full bg-gradient-to-br from-teal-600 to-purple-900 flex items-center justify-center text-white font-bold">D</div>';
+                e.target.parentElement.innerHTML =
+                  '<div class="w-full h-full flex items-center justify-center text-white font-bold">D</div>';
               }}
             />
           </div>
+
           <span className="text-xl font-bold text-white tracking-wider">
             DALGUX<span className="text-purple-500">.</span>DEVS
           </span>
@@ -94,8 +96,8 @@ const Navbar = () => {
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map(({ label, id }) => (
-            <a 
-              key={id} 
+            <a
+              key={id}
               href={`#${id}`}
               className="text-sm text-gray-400 hover:text-white transition-colors font-medium tracking-wide"
             >
@@ -103,7 +105,7 @@ const Navbar = () => {
             </a>
           ))}
 
-          <a 
+          <a
             href={WHATSAPP_URL}
             className="px-6 py-2 bg-white text-black font-bold text-sm rounded-full hover:bg-purple-400 transition-colors"
           >
@@ -128,10 +130,10 @@ const Navbar = () => {
           >
             <div className="px-6 py-8 flex flex-col gap-6">
               {NAV_LINKS.map(({ label, id }) => (
-                <a 
-                  key={id} 
-                  href={`#${id}`} 
-                  onClick={() => setMobileOpen(false)} 
+                <a
+                  key={id}
+                  href={`#${id}`}
+                  onClick={() => setMobileOpen(false)}
                   className="text-xl text-white font-bold"
                 >
                   {label}
@@ -155,11 +157,11 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-20">
       {/* Grid Background */}
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
-      <div className="absolute inset-0" style={{ 
-        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)', 
-        backgroundSize: '50px 50px' 
+      <div className="absolute inset-0" style={{
+        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)',
+        backgroundSize: '50px 50px'
       }}></div>
-      
+
       {/* Spotlight Gradient */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-purple-600/20 blur-[120px] rounded-full pointer-events-none"></div>
 
@@ -172,7 +174,7 @@ const Hero = () => {
           <div className="inline-block px-4 py-1.5 mb-6 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm">
             <span className="text-xs font-mono text-purple-400 uppercase tracking-widest">System.Init(2025)</span>
           </div>
-          
+
           <h1 className="text-6xl md:text-8xl font-bold text-white leading-tight mb-8 tracking-tight">
             EL FUTURO ES <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-purple-500 to-teal-400 animate-text-shimmer bg-[length:200%_auto]">
@@ -181,7 +183,7 @@ const Hero = () => {
           </h1>
 
           <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
-            En DALGUX Devs no escribimos código, arquitectamos soluciones. 
+            En DALGUX Devs no escribimos código, arquitectamos soluciones.
             Sistemas ERP, Apps y Webs diseñadas para dominar tu mercado.
           </p>
 
@@ -213,7 +215,7 @@ const Hero = () => {
 // --- Servicios "Glass Cards" ---
 const Services = () => {
   const services = [
-    { icon: Monitor, title: "Desarrollo Web", desc: "Sitios inmersivos y ultrarrápidos.", color: "text-blue-400" },
+    { icon: Monitor, title: "Desarrollo Web", desc: "Sitios inmersivos y ultrarápidos.", color: "text-blue-400" },
     { icon: Layers, title: "Sistemas ERP", desc: "Control total de tu operación.", color: "text-purple-400" },
     { icon: Smartphone, title: "Apps Móviles", desc: "Experiencias nativas iOS/Android.", color: "text-teal-400" },
     { icon: MessageSquare, title: "Chatbots IA", desc: "Automatización inteligente 24/7.", color: "text-pink-400" },
@@ -274,7 +276,7 @@ const Process = () => {
 
         <div className="space-y-4">
           {steps.map((step, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -307,8 +309,8 @@ const Projects = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-end mb-16">
           <div>
-             <h2 className="text-4xl font-bold text-white mb-2">Casos de Éxito</h2>
-             <p className="text-zinc-500">Innovación que genera resultados.</p>
+            <h2 className="text-4xl font-bold text-white mb-2">Casos de Éxito</h2>
+            <p className="text-zinc-500">Innovación que genera resultados.</p>
           </div>
           <a href={WHATSAPP_URL} className="text-purple-500 font-bold hover:text-purple-400 flex items-center gap-2">
             Ver todo <ArrowRight size={16} />
@@ -317,14 +319,14 @@ const Projects = () => {
 
         <div className="grid md:grid-cols-3 gap-8">
           {projects.map((p, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               whileHover={{ y: -10 }}
               className="group relative overflow-hidden rounded-2xl aspect-[4/5] bg-zinc-900 border border-white/5 cursor-pointer"
             >
-              <img 
-                src={p.img} 
-                alt={p.title} 
+              <img
+                src={p.img}
+                alt={p.title}
                 className="w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700 grayscale group-hover:grayscale-0"
               />
               <div className="absolute bottom-0 left-0 p-8 w-full bg-gradient-to-t from-black via-black/80 to-transparent">
@@ -346,17 +348,18 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="text-center md:text-left">
           <h4 className="text-2xl font-bold text-white mb-2">DALGUX DEVS</h4>
-          <p className="text-zinc-500 text-sm">Ingeniería de Software Premium.</p>
+          <p className="text-zinc-500 text-sm">El futuro es software</p>
         </div>
-        
+
         <div className="flex gap-6">
           <a href="https://www.linkedin.com/in/dalgux-dev/" className="text-zinc-500 hover:text-white transition-colors">LinkedIn</a>
           <a href="https://www.instagram.com/dalguxdevs?igsh=a21ydzM1NWdndnF3" className="text-zinc-500 hover:text-white transition-colors">Instagram</a>
+          <a href="https://www.facebook.com/share/1DEG9N6JmG/" className="text-zinc-500 hover:text-white transition-colors">Fecebook</a>
           <a href={WHATSAPP_URL} className="text-zinc-500 hover:text-white transition-colors">WhatsApp</a>
         </div>
       </div>
       <div className="text-center mt-12 text-zinc-800 text-xs font-mono">
-        SYSTEM STATUS: ONLINE • V3.0.1
+        @2025 DALGUX DEVS. Todos los derechos reservados.
       </div>
     </footer>
   );
